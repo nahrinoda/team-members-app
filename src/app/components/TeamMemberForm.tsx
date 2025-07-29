@@ -66,26 +66,89 @@ export default function TeamMemberForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <h2 className="mb-5 text-4xl text-center font-semibold tracking-tight text-balance text-gray-900">
+        Team Member Form
+      </h2>
       <div className="grid grid-cols-1 gap-x-8 gap-y-6">
-        <input name="name" placeholder="Full Name" onChange={handleChange} value={formData.name} required className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" />
-        <input name="position" placeholder="Position / Location" onChange={handleChange} value={formData.position} className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" />
-        <textarea name="bio" placeholder="Bio" onChange={handleChange} value={formData.bio} className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-        />
-        <input name="instagram" placeholder="Instagram Handle" onChange={handleChange} value={formData.instagram} className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600" />
         <div>
-          <label>Profile Picture:</label>
-          <input type="file" accept="image/*" onChange={(e) => setProfilePic(e.target.files?.[0] ?? null)} required />
+          <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">Full Name</label>
+          <input
+            aria-label="Full Name"
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            onChange={handleChange}
+            value={formData.name}
+            required
+            className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+          />
         </div>
         <div>
-          <label>3 Favorite Pictures:</label>
+          <label htmlFor="position" className="block text-sm/6 font-semibold text-gray-900">Position / Location</label>
           <input
+            aria-label="Position / Location"
+            id="position"
+            type="text"
+            name="position"
+            placeholder="Position / Location"
+            onChange={handleChange}
+            value={formData.position}
+            className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+          />
+        </div>
+        <div>
+          <label htmlFor="bio" className="block text-sm/6 font-semibold text-gray-900">Bio</label>
+          <textarea
+            aria-label="bio"
+            id="bio"
+            name="bio"
+            placeholder="Bio"
+            rows={4}
+            onChange={handleChange}
+            value={formData.bio}
+            className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+          />
+        </div>
+        <div>
+          <label htmlFor="instagram" className="block text-sm/6 font-semibold text-gray-900">Instagram Handle</label>
+          <input
+            aria-label="Instagram Handle"
+            id="instagram"
+            name="instagram"
+            placeholder="Instagram Handle"
+            onChange={handleChange}
+            value={formData.instagram}
+            className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+          />
+        </div>
+        <div>
+          <label htmlFor="profile-picture" className="block text-sm/6 font-semibold text-gray-900">Profile Picture:</label>
+          <input
+            id="profile-picture"
+            aria-label="Profile Picture"
+            type="file"
+            accept="image/*"
+            onChange={(e) => setProfilePic(e.target.files?.[0] ?? null)}
+            required
+            className="block rounded-md border-1 border-gray-300 hover:border-gray-900 p-1 text-center text-sm font-semibold text-gray-300 shadow-xs hover:font-bold hover:text-gray-900 cursor-pointer"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="favorite-pictures" className="block text-sm/6 font-semibold text-gray-900">3 Favorite Pictures:</label>
+          <input
+            id="favorite-pictures"
+            aria-label="Favorite Pictures"
             type="file"
             accept="image/*"
             multiple
             onChange={(e) => setFavoritePics(Array.from(e.target.files ?? []))}
             required
+            className="block rounded-md border-1 border-gray-300 hover:border-gray-900 p-1 text-center text-sm font-semibold text-gray-300 shadow-xs hover:font-bold hover:text-gray-900 cursor-pointer"
           />
         </div>
+
         <div>
           <button
             type="submit"
