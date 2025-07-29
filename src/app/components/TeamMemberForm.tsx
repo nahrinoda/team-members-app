@@ -3,7 +3,11 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
-export default function TeamMemberForm() {
+interface TeamMemberFormProps {
+  onSubmitSuccess?: () => void;
+}
+
+export default function TeamMemberForm({ onSubmitSuccess }: TeamMemberFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     position: '',
@@ -59,6 +63,7 @@ export default function TeamMemberForm() {
       setFormData({ name: '', position: '', bio: '', instagram: '' });
       setProfilePic(null);
       setFavoritePics([]);
+      onSubmitSuccess?.();
     } catch (err: any) {
       alert(err.message);
     }
